@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>サイト設計ツール</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- 左：プレビュー -->
+      <div class="preview-area">
+        <div class="device-switcher">
+          <button type="button" class="device-btn active" data-device="pc">
+            PC
+          </button>
+          <button type="button" class="device-btn" data-device="tablet">
+            Tablet
+          </button>
+          <button type="button" class="device-btn" data-device="mobile">
+            Mobile
+          </button>
+        </div>
+
+        <div class="preview-shell">
+          <div class="preview-frame device-pc" id="previewFrame">
+            <div class="preview-site" id="previewSite">
+              <section
+                class="preview-section preview-hero preview-light preview-space-normal"
+                id="section-hero"
+              >
+                <div class="preview-inner">
+                  <p class="preview-eyebrow">BRAND MESSAGE</p>
+                  <h1
+                    class="preview-title preview-title-center preview-title-medium"
+                    id="previewTitle"
+                  >
+                    タイトルサンプル
+                  </h1>
+                  <p class="preview-subtext">
+                    ここにキャッチコピーや説明文が入ります。
+                  </p>
+                </div>
+              </section>
+
+              <section
+                class="preview-section preview-concept"
+                id="section-concept"
+              >
+                <div class="preview-inner preview-concept-inner">
+                  <p class="preview-label">CONCEPT</p>
+                  <h2 class="preview-heading">ブランドコンセプト</h2>
+                  <p class="preview-copy">
+                    世界観や想い、こだわりが自然に伝わるような余白とテキスト量を想定したサンプルです。
+                  </p>
+                </div>
+              </section>
+
+              <section
+                class="preview-section preview-products"
+                id="section-products"
+              >
+                <div class="preview-inner">
+                  <p class="preview-label">PRODUCTS</p>
+                  <h2 class="preview-heading">商品一覧</h2>
+                  <div class="product-grid product-grid-2" id="productGrid">
+                    <article class="product-card">
+                      <div class="product-thumb"></div>
+                      <h3>Product 01</h3>
+                      <p>説明テキスト</p>
+                    </article>
+                    <article class="product-card">
+                      <div class="product-thumb"></div>
+                      <h3>Product 02</h3>
+                      <p>説明テキスト</p>
+                    </article>
+                    <article class="product-card">
+                      <div class="product-thumb"></div>
+                      <h3>Product 03</h3>
+                      <p>説明テキスト</p>
+                    </article>
+                    <article class="product-card">
+                      <div class="product-thumb"></div>
+                      <h3>Product 04</h3>
+                      <p>説明テキスト</p>
+                    </article>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="preview-section preview-footer footer-light"
+                id="section-footer"
+              >
+                <div class="preview-inner">
+                  <p class="preview-label">FOOTER</p>
+                  <h2 class="preview-heading">お問い合わせ・導線</h2>
+                  <p class="preview-copy">
+                    最後の印象やCTAの雰囲気を確認するためのフッターサンプルです。
+                  </p>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 右：選択UI -->
+      <div class="controls" id="controls">
+        <h2>サイト設計ツール</h2>
+
+        <div class="control-group active" data-target="section-hero">
+          <h3>HERO</h3>
+
+          <div class="option-block">
+            <h4>タイトル位置</h4>
+            <label
+              ><input type="radio" name="title_position" value="left" />
+              左</label
+            >
+            <label
+              ><input
+                type="radio"
+                name="title_position"
+                value="center"
+                checked
+              />
+              中央</label
+            >
+            <label
+              ><input type="radio" name="title_position" value="right" />
+              右</label
+            >
+          </div>
+
+          <div class="option-block">
+            <h4>タイトルサイズ</h4>
+            <label
+              ><input type="radio" name="title_size" value="small" /> 小</label
+            >
+            <label
+              ><input type="radio" name="title_size" value="medium" checked />
+              中</label
+            >
+            <label
+              ><input type="radio" name="title_size" value="large" /> 大</label
+            >
+          </div>
+
+          <div class="option-block">
+            <h4>背景トーン</h4>
+            <label
+              ><input type="radio" name="bg_tone" value="light" checked />
+              明るい</label
+            >
+            <label
+              ><input type="radio" name="bg_tone" value="beige" />
+              ベージュ</label
+            >
+            <label
+              ><input type="radio" name="bg_tone" value="dark" /> ダーク</label
+            >
+          </div>
+
+          <div class="option-block">
+            <h4>余白感</h4>
+            <label
+              ><input type="radio" name="spacing" value="compact" />
+              詰める</label
+            >
+            <label
+              ><input type="radio" name="spacing" value="normal" checked />
+              標準</label
+            >
+            <label
+              ><input type="radio" name="spacing" value="wide" /> 広め</label
+            >
+          </div>
+        </div>
+
+        <div class="control-group" data-target="section-concept">
+          <h3>CONCEPT</h3>
+          <div class="option-block">
+            <p class="group-note">
+              右側をスクロールすると、左のサンプルも対応セクションへ移動します。
+            </p>
+          </div>
+        </div>
+
+        <div class="control-group" data-target="section-products">
+          <h3>PRODUCTS</h3>
+
+          <div class="option-block">
+            <h4>商品一覧の列数</h4>
+            <label
+              ><input type="radio" name="product_layout" value="2" checked />
+              2列</label
+            >
+            <label
+              ><input type="radio" name="product_layout" value="3" /> 3列</label
+            >
+          </div>
+        </div>
+
+        <div class="control-group" data-target="section-footer">
+          <h3>FOOTER</h3>
+
+          <div class="option-block">
+            <h4>フッタートーン</h4>
+            <label
+              ><input type="radio" name="footer_tone" value="light" checked />
+              明るい</label
+            >
+            <label
+              ><input type="radio" name="footer_tone" value="dark" />
+              ダーク</label
+            >
+          </div>
+        </div>
+        <button id="submitBtn">この内容で送信</button>
+      </div>
+    </div>
+
+    <script src="script.js">
+      function getQueryParams() {
+          const params = new URLSearchParams(window.location.search);
+          return {
+            title_position: params.get("title_position"),
+            title_size: params.get("title_size"),
+            bg_tone: params.get("bg_tone"),
+            spacing: params.get("spacing"),
+            product_layout: params.get("product_layout"),
+            footer_tone: params.get("footer_tone"),
+            locked: params.get("locked")
+          };
+        }
+    </script>
+  </body>
+</html>
