@@ -220,7 +220,7 @@ function getFormData() {
       locked: "1",
     });
   
-    return `result.html?${params.toString()}`;
+    return `https://Kazuki-Ichikawa52.github.io/config-tool/result.html?${params.toString()}`;
   }
   
   /* --------------------------
