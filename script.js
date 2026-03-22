@@ -197,6 +197,9 @@ controls.addEventListener('scroll', () => {
 -------------------------- */
 function getFormData() {
     return {
+      store_name: document.getElementById("storeName")?.value || "",
+      person_name: document.getElementById("personName")?.value || "",
+      person_email: document.getElementById("personEmail")?.value || "",
       title_position: document.querySelector('input[name="title_position"]:checked')?.value || "",
       title_size: document.querySelector('input[name="title_size"]:checked')?.value || "",
       bg_tone: document.querySelector('input[name="bg_tone"]:checked')?.value || "",
@@ -211,6 +214,9 @@ function getFormData() {
   -------------------------- */
   function generateResultURL(data) {
     const params = new URLSearchParams({
+      store_name: data.store_name,
+      person_name: data.person_name,
+      person_email: data.person_email,
       title_position: data.title_position,
       title_size: data.title_size,
       bg_tone: data.bg_tone,
@@ -222,7 +228,6 @@ function getFormData() {
   
     return `https://Kazuki-Ichikawa52.github.io/config-tool/result.html?${params.toString()}`;
   }
-  
   /* --------------------------
      URLパラメータ取得
   -------------------------- */
@@ -230,6 +235,9 @@ function getFormData() {
     const params = new URLSearchParams(window.location.search);
   
     return {
+      store_name: params.get("store_name"),
+      person_name: params.get("person_name"),
+      person_email: params.get("person_email"),
       title_position: params.get("title_position"),
       title_size: params.get("title_size"),
       bg_tone: params.get("bg_tone"),
@@ -244,6 +252,20 @@ function getFormData() {
      値を画面へ反映
   -------------------------- */
   function applyData(data) {
+    if (data.store_name) {
+        const el = document.getElementById("storeName");
+        if (el) el.value = data.store_name;
+      }
+      
+      if (data.person_name) {
+        const el = document.getElementById("personName");
+        if (el) el.value = data.person_name;
+      }
+      
+      if (data.person_email) {
+        const el = document.getElementById("personEmail");
+        if (el) el.value = data.person_email;
+      }
     if (data.title_position) updateTitlePosition(data.title_position);
     if (data.title_size) updateTitleSize(data.title_size);
     if (data.bg_tone) updateBackgroundTone(data.bg_tone);
@@ -261,11 +283,10 @@ function getFormData() {
      UIロック
   -------------------------- */
   function lockUI() {
-    document.querySelectorAll('input[type="radio"]').forEach((el) => {
+    document.querySelectorAll('input').forEach((el) => {
       el.disabled = true;
     });
   }
-  
   /* --------------------------
      送信処理
   -------------------------- */
@@ -275,18 +296,28 @@ function getFormData() {
       const resultURL = generateResultURL(formData);
   
       const message = `
-  【サイト設計結果】
-  
-  ・タイトル位置：${formData.title_position}
-  ・タイトルサイズ：${formData.title_size}
-  ・背景：${formData.bg_tone}
-  ・余白：${formData.spacing}
-  ・商品：${formData.product_layout}列
-  ・フッター：${formData.footer_tone}
-  
-  ▼確認URL
-  ${resultURL}
-  `;
+      【サイト設計結果】
+      
+      ■ 基本情報
+      ・店舗名：${formData.store_name}
+      ・担当者名：${formData.person_name}
+      ・メール：${formData.person_email}
+      
+      ■ HERO
+      ・タイトル位置：${formData.title_position}
+      ・タイトルサイズ：${formData.title_size}
+      ・背景：${formData.bg_tone}
+      ・余白：${formData.spacing}
+      
+      ■ 商品
+      ・商品：${formData.product_layout}列
+      
+      ■ フッター
+      ・フッター：${formData.footer_tone}
+      
+      ▼確認URL
+      ${resultURL}
+      `;
   
       if (typeof emailjs === "undefined") {
         alert("EmailJS が読み込まれていません");
